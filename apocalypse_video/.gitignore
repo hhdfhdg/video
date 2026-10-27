@@ -1,0 +1,8 @@
+.env
+__pycache__/
+frames/
+render.log
+audio/*.wav
+voice/
+voice.wav
+audio_final.wav

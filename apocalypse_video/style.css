@@ -1,0 +1,89 @@
+/* АПОКАЛИПСИС — стили страницы-превью.
+   Сам кадр целиком рисуется на canvas (script.js), здесь только
+   «кинематографичная» рамка превью и панель управления. */
+
+:root {
+  --black:   #0a0a0a;
+  --gray:    #8a8a8a;
+  --blood:   #8b0000;
+  --amber:   #d4a017;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  background: var(--black);
+  color: var(--gray);
+  font-family: "Arial Black", Arial, sans-serif;
+  overflow: hidden;
+}
+
+#stage {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 40%, #141414 0%, #0a0a0a 70%);
+}
+
+#scene {
+  /* вписываем вертикальный кадр 9:16 в окно превью */
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 1080 / 1920;
+  display: block;
+  box-shadow: 0 0 0 1px #222, 0 0 60px rgba(0, 0, 0, .9);
+}
+
+/* декоративный CSS-оверлей (виден только в превью, не в рендере) */
+#cssfx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 3px);
+  mix-blend-mode: overlay;
+}
+
+#previewbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 18px;
+  background: linear-gradient(#111, #0a0a0a);
+  border-top: 1px solid #1f1f1f;
+}
+
+#slider { flex: 1; accent-color: var(--blood); }
+
+#timelabel {
+  min-width: 130px;
+  font: 13px/1 monospace;
+  color: var(--amber);
+  letter-spacing: 1px;
+}
+
+#playBtn {
+  background: #141414;
+  color: var(--gray);
+  border: 1px solid var(--blood);
+  padding: 8px 16px;
+  font: bold 13px monospace;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#playBtn:hover { color: var(--amber); border-color: var(--amber); }
+
+body.rendering #previewbar, body.rendering #cssfx { display: none; }
+body.rendering #stage { height: 100vh; }
