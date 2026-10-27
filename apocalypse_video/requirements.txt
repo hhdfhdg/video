@@ -1,0 +1,6 @@
+playwright>=1.40
+elevenlabs>=1.50
+python-dotenv>=1.0
+numpy>=1.26
+scipy>=1.11
+imageio-ffmpeg>=0.4.9
