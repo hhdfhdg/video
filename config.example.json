@@ -1,0 +1,7 @@
+{
+  "host": "127.0.0.1",
+  "port": 8080,
+  "default_base_url": "http://localhost:1234/v1",
+  "request_timeout_seconds": 300,
+  "connect_timeout_seconds": 5
+}
